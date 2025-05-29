@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -iname "*.gif" -printf "%h/%f\n" | sort -f | while read -r file; do dir=${file%/*}; if [[ "$dir" != "$last" ]]; then last="$dir"; f=${file##*/}; echo "${f%.gif}"; fi; done
+find . -type f -iname "*.gif" -print0 | sort -z -f | awk -v RS='\0' '!a[substr($0, 1, match($0, /\/[^\/]+$/))]++ {f=substr($0, RSTART+RLENGTH-1); sub(/\.gif$/,"",f); print f}'
