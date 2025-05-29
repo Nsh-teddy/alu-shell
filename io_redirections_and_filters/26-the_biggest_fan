@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 | cut -f 1 | sort |uniq -c | sort -nr | head -n 11 | tr -s '' | cut -d '' -f 3
+awk 'NR > 1 {count[$1]++} END {for (ip in count) print count[ip], ip}' | sort -rn | head -n 11 | awk '{print $2}'
