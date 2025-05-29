@@ -1,5 +1,2 @@
 #!/bin/bash
-find . -type f -name '*.gif' -print | 
-awk -F/ '{print $NF}' | 
-awk '{sub(/\.gif$/, "", $0); print}' | 
-LC_ALL=C sort -f
+find . -type f -iname "*.gif" | while read f; do echo "${f##*/}" | rev | cut -c5- | rev; done | sort -f
