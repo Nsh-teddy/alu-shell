@@ -1,12 +1,5 @@
 #!/bin/bash
-
-# Find all .gif files (including hidden ones) in current directory and subdirectories,
-# list only regular files, strip directory and extension,
-# then sort case-insensitively, one filename per line.
-
-find . -type f -iname '*.gif' | while read -r file; do
-    filename="${file##*/}"           # Remove directory path
-    filename="${filename%.[Gg][Ii][Ff]}"  # Remove .gif extension case-insensitively
-    echo "$filename"
-done | sort -f
-
+find . -type f -name '*.gif' -print | 
+awk -F/ '{print $NF}' | 
+awk '{sub(/\.gif$/, "", $0); print}' | 
+LC_ALL=C sort -f
