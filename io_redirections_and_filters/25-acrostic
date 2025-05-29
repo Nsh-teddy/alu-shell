@@ -1,13 +1,2 @@
 #!/bin/bash
-
-# Read from stdin line by line, print the first character of each line (if any),
-# then output the decoded acrostic message in uppercase followed by a newline.
-
-while IFS= read -r line; do
-    # Print first character of the line (if line not empty)
-    printf '%s' "${line:0:1}"
-done
-
-# Print newline at end
-echo
-
+awk '{printf "%s", substr($0,1,1)} END {print ""}'
