@@ -1,2 +1,4 @@
 #!/bin/bash
-cut -c1 | tr -d '\n' | { read x; printf "%s\n" "$x"; }
+cut -c1 | tr -d '\n' | { read line
+printf '%s\n' "$line"
+}
