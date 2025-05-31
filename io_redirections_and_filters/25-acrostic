@@ -1,4 +1,2 @@
 #!/bin/bash
-cut -c1 | tr -d '\n' | { read line
-printf '%s\n' "$line"
-}
+cut -c1 | tr -d '\n' | xargs -0 printf "%s\n"
