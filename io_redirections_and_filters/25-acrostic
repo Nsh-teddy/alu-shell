@@ -1,2 +1,2 @@
 #!/bin/bash
-while IFS= read -r line; do printf "%s\n" "$line"; done | cut -c1 | tr -d '\n'; echo
+cut -c1 | tr -d '\n'; echo
