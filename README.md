@@ -1,2 +1,2 @@
-#!/bin/bash
-# This file is required by the checker
+ALX Shell project
+This project sets up aliases and basic shell tasks
