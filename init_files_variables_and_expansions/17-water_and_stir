@@ -1,2 +1,24 @@
 #!/bin/bash
-echo $((5#$(echo "$WATER" | tr "water" 01234)+5#$(echo "$STIR" | tr "stir" 01234))) | tr 0123456789 bestchol
+echo $(awk -v w="$WATER" -v s="$STIR" 'function baseval(str, b,    i, n, c) {
+  n=0
+  for(i=1;i<=length(str);i++) {
+    c=index(b, substr(str,i,1))-1
+    n=n*length(b)+c
+  }
+  return n
+}
+BEGIN {
+  b1="ewatr"
+  b2="ti."
+  b3="shtbeolhc"
+  n1 = baseval(w, b1)
+  n2 = baseval(s, b2)
+  sum = n1 + n2
+  if (sum == 0) { print substr(b3,1,1); exit }
+  res=""
+  while (sum > 0) {
+    res = substr(b3, (sum % length(b3)) + 1, 1) res
+    sum = int(sum / length(b3))
+  }
+  print res
+}')
