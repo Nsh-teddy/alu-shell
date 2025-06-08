@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((6#$(echo $WATER | tr 'ewwatr' '012345') + 5#$(echo $STIR | tr 'ti.ir' '01234'))) | tr '012345678' 'bestchol'
+echo $((6#$(echo $WATER | tr 'ewatr' '01234') + 4#$(echo $STIR | tr 'tir.' '0123'))) | tr '0123456' 'bestchol'
